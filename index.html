@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AntonApps</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0b1220;
+  color: #e5e7eb;
+}
+
+header {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+h1 {
+  font-size: 3em;
+  color: #22c55e;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
+}
+
+.card {
+  background: rgba(17,24,39,0.8);
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  transition: 0.3s;
+  border: 1px solid rgba(34,197,94,0.2);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  border-color: #22c55e;
+}
+
+.card img {
+  width: 80px;
+  margin-bottom: 15px;
+}
+
+.card h3 {
+  margin: 10px 0;
+}
+
+.card p {
+  font-size: 0.9em;
+  color: #9ca3af;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #22c55e;
+  color: black;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+footer {
+  text-align: center;
+  padding: 30px;
+  color: #6b7280;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>AntonApps</h1>
+  <p>Apps independientes, útiles y en constante evolución</p>
+</header>
+
+<section class="grid">
+
+<!-- NetGuardian -->
+<div class="card">
+  <img src="netguardian.png">
+  <h3>NetGuardian</h3>
+  <p>Complemento para Firefox que bloquea rastreadores, mejora la privacidad y protege tu navegación.</p>
+  <a href="/netguardian/" class="btn">Ver app</a>
+</div>
+
+<!-- HaberMX -->
+<div class="card">
+  <img src="habermx.png">
+  <h3>HaberMX</h3>
+  <p>Calculadora de haber de retiro para miembros de las fuerzas armadas en México.</p>
+  <a href="/habermx/" class="btn">Ver app</a>
+</div>
+
+<!-- IMC -->
+<div class="card">
+  <img src="imc.png">
+  <h3>Simple IMC Calculator</h3>
+  <p>Calcula tu índice de masa corporal de forma rápida y sencilla desde tu dispositivo Android.</p>
+  <a href="/imc/" class="btn">Ver app</a>
+</div>
+
+<!-- SonarScan -->
+<div class="card">
+  <img src="sonarscan.png">
+  <h3>SonarScan</h3>
+  <p>Visualiza el sonido ambiente con filtrado en tiempo real y vista tipo waterfall.</p>
+  <a href="/sonarscan/" class="btn">Ver app</a>
+</div>
+
+<!-- Passwords -->
+<div class="card">
+  <img src="passwords.png">
+  <h3>Simple Passwords Generator</h3>
+  <p>Genera contraseñas seguras y guárdalas para uso rápido y sencillo.</p>
+  <a href="/passwords/" class="btn">Ver app</a>
+</div>
+
+</section>
+
+<footer>
+  © 2026 AntonApps
+</footer>
+
+</body>
+</html>
