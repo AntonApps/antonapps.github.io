@@ -4,51 +4,85 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NetGuardian</title>
+
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background: #0b1220;
       color: #e5e7eb;
+      overflow-x: hidden;
     }
+
+    /* Canvas partículas */
+    #particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: radial-gradient(circle at center, #0b1220 0%, #05080f 100%);
+    }
+
     header {
       text-align: center;
-      padding: 60px 20px;
+      padding: 80px 20px;
     }
+
+    .logo {
+      width: 120px;
+      margin-bottom: 20px;
+    }
+
     h1 {
       font-size: 3em;
       margin-bottom: 10px;
+      color: #22c55e;
     }
+
     p {
       color: #9ca3af;
+      max-width: 600px;
+      margin: auto;
     }
+
     .btn {
       display: inline-block;
       margin-top: 20px;
-      padding: 12px 24px;
-      background: #2563eb;
-      color: white;
+      padding: 14px 28px;
+      background: #22c55e;
+      color: black;
       text-decoration: none;
-      border-radius: 8px;
+      border-radius: 10px;
+      font-weight: bold;
+      transition: 0.3s;
     }
+
+    .btn:hover {
+      background: #16a34a;
+    }
+
     .section {
-      padding: 50px 20px;
+      padding: 60px 20px;
       max-width: 1000px;
       margin: auto;
     }
+
     .features {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
     }
+
     .card {
-      background: #111827;
+      background: rgba(17, 24, 39, 0.7);
+      backdrop-filter: blur(10px);
       padding: 20px;
       border-radius: 12px;
+      border: 1px solid rgba(34,197,94,0.2);
     }
-    .card h3 {
-      margin-top: 0;
-    }
+
     footer {
       text-align: center;
       padding: 30px;
@@ -59,42 +93,42 @@
 </head>
 <body>
 
+<canvas id="particles"></canvas>
+
 <header>
+  <!-- CAMBIA logo.png por tu imagen real -->
+  <img src="logo.png" class="logo" alt="NetGuardian">
+
   <h1>NetGuardian</h1>
-  <p>Protege tu navegación. Detecta amenazas. Navega con control.</p>
-  <a href="#" class="btn">Descargar</a>
+  <p>Bloquea rastreadores. Protege tu privacidad. Navega sin ser vigilado.</p>
+  <a href="https://addons.mozilla.org/es-MX/firefox/addon/netguardian-esp/" class="btn">Descargar</a>
 </header>
 
 <section class="section">
   <h2>¿Qué es NetGuardian?</h2>
-  <p>NetGuardian es una herramienta diseñada para proteger tu navegación bloqueando rastreadores, detectando contenido sospechoso y mejorando tu privacidad en tiempo real.</p>
+  <p>Una extensión ligera que bloquea rastreadores, anuncios y telemetría para una navegación más segura y privada.</p>
 </section>
 
 <section class="section">
   <h2>Características</h2>
   <div class="features">
     <div class="card">
-      <h3>🔒 Bloqueo de rastreadores</h3>
-      <p>Evita que sitios web recopilen tu información sin permiso.</p>
+      <h3>🔒 Bloqueo inteligente</h3>
+      <p>Evita rastreadores y scripts maliciosos.</p>
     </div>
     <div class="card">
-      <h3>⚠️ Detección de Fake News</h3>
-      <p>Identifica contenido potencialmente engañoso.</p>
+      <h3>⚠️ Detección</h3>
+      <p>Identifica contenido sospechoso.</p>
     </div>
     <div class="card">
-      <h3>⚡ Ligero y rápido</h3>
-      <p>No afecta el rendimiento de tu navegador.</p>
+      <h3>⚡ Rendimiento</h3>
+      <p>No afecta la velocidad de navegación.</p>
     </div>
     <div class="card">
-      <h3>📊 Visualización de actividad</h3>
-      <p>Mira qué se bloquea en tiempo real.</p>
+      <h3>📊 Visualización</h3>
+      <p>Mira lo que se bloquea en tiempo real.</p>
     </div>
   </div>
-</section>
-
-<section class="section">
-  <h2>Capturas</h2>
-  <p>(Aquí puedes agregar imágenes de tu app)</p>
 </section>
 
 <section class="section" style="text-align:center;">
@@ -105,6 +139,57 @@
 <footer>
   © 2026 AntonApps
 </footer>
+
+<script>
+  const canvas = document.getElementById('particles');
+  const ctx = canvas.getContext('2d');
+
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const particles = [];
+  const count = 120;
+
+  for (let i = 0; i < count; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      length: Math.random() * 20 + 10,
+      speed: Math.random() * 3 + 2
+    });
+  }
+
+  function draw() {
+    ctx.fillStyle = 'rgba(5,8,15,0.2)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.strokeStyle = '#22c55e';
+    ctx.lineWidth = 1;
+
+    particles.forEach(p => {
+      ctx.beginPath();
+      ctx.moveTo(p.x, p.y);
+      ctx.lineTo(p.x, p.y + p.length);
+      ctx.stroke();
+
+      p.y += p.speed;
+
+      if (p.y > canvas.height) {
+        p.y = -p.length;
+        p.x = Math.random() * canvas.width;
+      }
+    });
+
+    requestAnimationFrame(draw);
+  }
+
+  draw();
+
+  window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+</script>
 
 </body>
 </html>
